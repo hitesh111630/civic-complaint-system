@@ -1,0 +1,29 @@
+[phases.setup]
+nixPkgs = ["python311", "gcc"]
+
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
+
+[phases.build]
+cmds = []
+
+[start]
+cmd = "uvicorn main:app --host 0.0.0.0 --port $PORT"
+```
+
+---
+
+## Fix 2 — Add `Procfile` to your backend
+
+Create `civic/backend/Procfile`:
+```
+web: uvicorn main:app --host 0.0.0.0 --port $PORT
+```
+
+---
+
+## Fix 3 — Tell Railway where the backend root is
+
+On Railway, go to your service → **Settings** → **Root Directory** and set it to:
+```
+backend
