@@ -1,0 +1,18 @@
+[build]
+builder = "NIXPACKS"
+buildCommand = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "uvicorn main:app --host 0.0.0.0 --port $PORT"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+```
+
+---
+
+### Step 3 — Create a `runtime.txt` inside `backend/`
+
+Open Notepad, type this one line, save as `civic\backend\runtime.txt` (Save as type: **All Files**):
+```
+python-3.11.0
